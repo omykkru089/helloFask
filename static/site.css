@@ -30,3 +30,31 @@
     padding: 5px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+.container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 300px;
+}
+
+.card h2 {
+    margin-bottom: 10px;
+}
+
+.task-list {
+    padding: 0;
+    list-style: none;
+}
+
+.task-item {
+    margin-bottom: 5px;
+}

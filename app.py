@@ -1,6 +1,6 @@
 from datetime import datetime
-from flask import Flask
-from flask import render_template
+from flask import Flask, render_template, request
+import functions as f
 
 app = Flask(__name__)
 
@@ -10,14 +10,34 @@ app = Flask(__name__)
 def home():
     return render_template("home.html")
 
-# New functions
+@app.route("/csimetrico/", methods=['GET','POST'])
+def csimetrico():
+    if request.method == 'POST':
+        message = request.form['message']
+        key = request.form['key']
+        mode = request.form['mode']
+
+        if mode == 'encrypt':
+            encrypted_message = f.encrypt_message(message, key)
+            return render_template('csimetrico.html', encrypted_message=encrypted_message, mode=mode)
+        elif mode == 'decrypt':
+            decrypted_message = f.decrypt_message(message, key)
+            return render_template('csimetrico.html', decrypted_message=decrypted_message, mode=mode)
+
+    return render_template("csimetrico.html")
+
+@app.route("/casimetrico/")
+def casimetrico():
+    return render_template("casimetrico.html")
+
+
 @app.route("/about/")
 def about():
     return render_template("about.html")
 
-@app.route("/contact/")
-def contact():
-    return render_template("contact.html")
+@app.route("/doc/")
+def doc():
+    return render_template("doc.html")
 
 
 
