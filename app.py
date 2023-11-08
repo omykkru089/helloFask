@@ -39,6 +39,10 @@ def about():
 def doc():
     return render_template("doc.html")
 
+@app.route("/otro/")
+def otro():
+    return render_template("otro.html")
+
 
 
 @app.route("/hello/")
